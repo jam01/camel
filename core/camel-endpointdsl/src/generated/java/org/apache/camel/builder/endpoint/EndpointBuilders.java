@@ -307,6 +307,7 @@ public interface EndpointBuilders
             org.apache.camel.builder.endpoint.dsl.SnsEndpointBuilderFactory,
             org.apache.camel.builder.endpoint.dsl.SolrEndpointBuilderFactory,
             org.apache.camel.builder.endpoint.dsl.SoroushBotEndpointBuilderFactory,
+            org.apache.camel.builder.endpoint.dsl.SpanEndpointBuilderFactory,
             org.apache.camel.builder.endpoint.dsl.SparkEndpointBuilderFactory,
             org.apache.camel.builder.endpoint.dsl.SplunkEndpointBuilderFactory,
             org.apache.camel.builder.endpoint.dsl.SplunkHECEndpointBuilderFactory,

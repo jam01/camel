@@ -2859,6 +2859,18 @@ public interface ComponentsBuilderFactory {
         return org.apache.camel.builder.component.dsl.OpenstackSwiftComponentBuilderFactory.openstackSwift();
     }
     /**
+     * OpenTracing Span (camel-opentracing)
+     * Tagging and adding/retrieving baggage items from the active OpenTracing
+     * Span.
+     * 
+     * Category: monitoring
+     * Since: 3.4
+     * Maven coordinates: org.apache.camel:camel-opentracing
+     */
+    static org.apache.camel.builder.component.dsl.OpentracingSpanComponentBuilderFactory.OpentracingSpanComponentBuilder opentracingSpan() {
+        return org.apache.camel.builder.component.dsl.OpentracingSpanComponentBuilderFactory.opentracingSpan();
+    }
+    /**
      * OptaPlanner (camel-optaplanner)
      * Solve planning problems with OptaPlanner.
      * 

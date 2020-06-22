@@ -11073,6 +11073,75 @@ public class StaticEndpointBuilders {
         return org.apache.camel.builder.endpoint.dsl.SwiftEndpointBuilderFactory.endpointBuilder(componentName, path);
     }
     /**
+     * OpenTracing Span (camel-opentracing)
+     * Tagging and adding/retrieving baggage items from the active OpenTracing
+     * Span.
+     * 
+     * Category: monitoring
+     * Since: 3.4
+     * Maven coordinates: org.apache.camel:camel-opentracing
+     * 
+     * Syntax: <code>opentracing-span:operation</code>
+     * 
+     * Path parameter: operation (required)
+     * The operation to perform on the active Span.
+     * The value can be one of: tag, log, setBaggage, getBaggage
+     * 
+     * Path parameter: spanKey
+     * The tag or baggage item key on the Span. For tag or setBaggage operations
+     * it's the key that will be set on the Span, for getBaggage it's the key
+     * that will be used to retrieve from the Span.
+     * 
+     * Path parameter: valueHeader
+     * The name of the Exchange message header where the the value will be
+     * retrieved from or assigned to. For tag or setBaggage it's the name of the
+     * header whose value will be set on the Span, for getBaggage it's the name
+     * of the header where the value retrieved from the Span will be assigned
+     * to.
+     * 
+     * @param path operation
+     */
+    static org.apache.camel.builder.endpoint.dsl.SpanEndpointBuilderFactory.SpanEndpointBuilder opentracingSpan(
+            String path) {
+        return org.apache.camel.builder.endpoint.dsl.SpanEndpointBuilderFactory.endpointBuilder("opentracing-span", path);
+    }
+    /**
+     * OpenTracing Span (camel-opentracing)
+     * Tagging and adding/retrieving baggage items from the active OpenTracing
+     * Span.
+     * 
+     * Category: monitoring
+     * Since: 3.4
+     * Maven coordinates: org.apache.camel:camel-opentracing
+     * 
+     * Syntax: <code>opentracing-span:operation</code>
+     * 
+     * Path parameter: operation (required)
+     * The operation to perform on the active Span.
+     * The value can be one of: tag, log, setBaggage, getBaggage
+     * 
+     * Path parameter: spanKey
+     * The tag or baggage item key on the Span. For tag or setBaggage operations
+     * it's the key that will be set on the Span, for getBaggage it's the key
+     * that will be used to retrieve from the Span.
+     * 
+     * Path parameter: valueHeader
+     * The name of the Exchange message header where the the value will be
+     * retrieved from or assigned to. For tag or setBaggage it's the name of the
+     * header whose value will be set on the Span, for getBaggage it's the name
+     * of the header where the value retrieved from the Span will be assigned
+     * to.
+     * 
+     * @param componentName to use a custom component name for the endpoint
+     * instead of the default name
+     * @param path operation
+     */
+    static org.apache.camel.builder.endpoint.dsl.SpanEndpointBuilderFactory.SpanEndpointBuilder opentracingSpan(
+            String componentName,
+            String path) {
+        return org.apache.camel.builder.endpoint.dsl.SpanEndpointBuilderFactory.endpointBuilder(componentName, path);
+    }
+    /**
      * OptaPlanner (camel-optaplanner)
      * Solve planning problems with OptaPlanner.
      * 
