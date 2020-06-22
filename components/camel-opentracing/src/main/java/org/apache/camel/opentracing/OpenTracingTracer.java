@@ -16,6 +16,7 @@
  */
 package org.apache.camel.opentracing;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -79,7 +80,7 @@ public class OpenTracingTracer extends ServiceSupport implements RoutePolicyFact
     private final OpenTracingLogListener logListener = new OpenTracingLogListener();
     private Tracer tracer;
     private CamelContext camelContext;
-    private Set<String> excludePatterns = new HashSet<>();
+    private Set<String> excludePatterns = new HashSet<>(Arrays.asList("opentracing-span:.*"));
     private boolean encoding;
 
     static {

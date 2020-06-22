@@ -57,7 +57,7 @@ public class CamelOpenTracingTestSupport extends CamelTestSupport {
 
         OpenTracingTracer ottracer = new OpenTracingTracer();
         ottracer.setTracer(tracer);
-        ottracer.setExcludePatterns(getExcludePatterns());
+        ottracer.getExcludePatterns().addAll(getExcludePatterns());
 
         ottracer.init(context);
 
@@ -132,6 +132,18 @@ public class CamelOpenTracingTestSupport extends CamelTestSupport {
             assertEquals("Number of log messages", td.getLogMessages().size(), span.logEntries().size());
             for (int i = 0; i < td.getLogMessages().size(); i++) {
                 assertEquals(td.getLogMessages().get(i), span.logEntries().get(i).fields().get("message"));
+            }
+        }
+
+        if (!td.getTags().isEmpty()) {
+            for (Map.Entry<String, String> entry : td.getTags().entrySet()) {
+                assertEquals(entry.getValue(), span.tags().get(entry.getKey()));
+            }
+        }
+
+        if (!td.getBaggage().isEmpty()) {
+            for (Map.Entry<String, String> entry : td.getBaggage().entrySet()) {
+                assertEquals(entry.getValue(), span.getBaggageItem(entry.getKey()));
             }
         }
     }
