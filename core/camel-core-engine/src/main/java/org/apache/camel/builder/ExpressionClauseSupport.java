@@ -22,6 +22,7 @@ import org.apache.camel.CamelContext;
 import org.apache.camel.Expression;
 import org.apache.camel.ExpressionFactory;
 import org.apache.camel.model.language.ConstantExpression;
+import org.apache.camel.model.language.DatasonnetExpression;
 import org.apache.camel.model.language.ExchangePropertyExpression;
 import org.apache.camel.model.language.GroovyExpression;
 import org.apache.camel.model.language.HeaderExpression;
@@ -246,6 +247,17 @@ public class ExpressionClauseSupport<T> {
      */
     public T groovy(String text) {
         return expression(new GroovyExpression(text));
+    }
+
+    /**
+     * Evaluates a <a href="http://camel.apache.org/datasonnet.html">Datasonnet
+     * expression</a>
+     *
+     * @param text the expression to be evaluated
+     * @return the builder to continue processing the DSL
+     */
+    public T datasonnet(String text) {
+        return expression(new DatasonnetExpression(text));
     }
 
     /**
