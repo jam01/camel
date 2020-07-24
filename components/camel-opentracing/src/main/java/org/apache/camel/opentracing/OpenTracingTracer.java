@@ -354,15 +354,22 @@ public class OpenTracingTracer extends ServiceSupport implements RoutePolicyFact
                 if (isExcluded(exchange, route.getEndpoint())) {
                     return;
                 }
-                SpanDecorator sd = getSpanDecorator(route.getEndpoint());
-                Span parent = ActiveSpanManager.getSpan(exchange);
-                Span span = tracer.buildSpan(sd.getOperationName(exchange, route.getEndpoint()))
-                    .asChildOf(parent)
-                    .start();
 
-                if (parent == null && !(sd instanceof AbstractInternalSpanDecorator)) {
-                    span.setTag(Tags.SPAN_KIND.getKey(), sd.getReceiverSpanKind());
+                SpanDecorator sd = getSpanDecorator(route.getEndpoint());
+                SpanBuilder builder = tracer.buildSpan(sd.getOperationName(exchange, route.getEndpoint()));
+                Span parentFromExchange = ActiveSpanManager.getSpan(exchange);
+
+                if (parentFromExchange != null) {
+                    // this means it's an in-process request
+                    builder.asChildOf(parentFromExchange);
+                } else if (!(sd instanceof AbstractInternalSpanDecorator)) {
+                    // we assume it's an inter-process request and tag it as Server Span
+                    builder.asChildOf(tracer.extract(Format.Builtin.TEXT_MAP,
+                            sd.getExtractAdapter(exchange.getIn().getHeaders(), encoding)))
+                            .withTag(Tags.SPAN_KIND.getKey(), sd.getReceiverSpanKind());
                 }
+
+                Span span = builder.start();
 
                 sd.pre(span, exchange, route.getEndpoint());
                 ActiveSpanManager.activate(exchange, span);
