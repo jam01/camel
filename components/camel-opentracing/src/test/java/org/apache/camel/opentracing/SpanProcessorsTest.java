@@ -37,6 +37,7 @@ public class SpanProcessorsTest extends CamelOpenTracingTestSupport {
                     .setParentId(3).addLogMessage("routing at a").addLogMessage("End of routing")
                     .addBaggage("a-baggage", "request-header-value"),
             new SpanTestData().setLabel("direct:start server").setUri("direct://start").setOperation("start")
+                    .setKind("server")
     };
 
     public SpanProcessorsTest() {

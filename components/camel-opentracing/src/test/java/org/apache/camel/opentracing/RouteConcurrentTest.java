@@ -29,7 +29,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class RouteConcurrentTest extends CamelOpenTracingTestSupport {
 
     private static SpanTestData[] testdata = {
-        new SpanTestData().setLabel("seda:foo server").setUri("seda://foo?concurrentConsumers=5").setOperation("foo"),
+        new SpanTestData().setLabel("seda:foo server").setUri("seda://foo?concurrentConsumers=5").setOperation("foo")
+            .setKind("server"),
         new SpanTestData().setLabel("seda:bar server").setUri("seda://bar?concurrentConsumers=5").setOperation("bar")
             .setParentId(0)
     };

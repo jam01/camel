@@ -52,6 +52,7 @@ public class TracingMulticastParallelRouteTest extends CamelOpenTracingTestSuppo
         new SpanTestData().setLabel("direct:start server").setOperation("direct-to-1")
             .setParentId(13),
         new SpanTestData().setLabel("direct:start server").setUri("direct://start").setOperation("start")
+            .setKind("server")
     };
 
     public TracingMulticastParallelRouteTest() {

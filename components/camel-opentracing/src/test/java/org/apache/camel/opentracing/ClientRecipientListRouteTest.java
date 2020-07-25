@@ -31,6 +31,7 @@ public class ClientRecipientListRouteTest extends CamelOpenTracingTestSupport {
         new SpanTestData().setLabel("seda:c server").setUri("seda://c").setOperation("c")
             .setParentId(3),
         new SpanTestData().setLabel("direct:start server").setUri("direct://start").setOperation("start")
+            .setKind("server")
     };
 
     public ClientRecipientListRouteTest() {

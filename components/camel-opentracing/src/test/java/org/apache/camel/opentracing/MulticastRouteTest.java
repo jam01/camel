@@ -31,6 +31,7 @@ public class MulticastRouteTest extends CamelOpenTracingTestSupport {
         new SpanTestData().setLabel("seda:a server").setUri("seda://a").setOperation("a")
             .setParentId(3),
         new SpanTestData().setLabel("direct:start server").setUri("direct://start").setOperation("start")
+            .setKind("server")
     };
 
     public MulticastRouteTest() {

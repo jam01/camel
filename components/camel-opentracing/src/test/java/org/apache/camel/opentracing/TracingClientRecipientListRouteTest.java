@@ -44,6 +44,7 @@ public class TracingClientRecipientListRouteTest extends CamelOpenTracingTestSup
         new SpanTestData().setLabel("a: recipientList").setOperation("direct-recipientList-1")
             .setParentId(9),
         new SpanTestData().setLabel("direct:start server").setUri("direct://start").setOperation("start")
+            .setKind("server")
     };
 
     public TracingClientRecipientListRouteTest() {

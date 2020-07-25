@@ -56,6 +56,7 @@ public class EIPTracingRouteTest extends CamelOpenTracingTestSupport {
         new SpanTestData().setLabel("direct-to server").setOperation("direct-to")
             .setParentId(13),
         new SpanTestData().setLabel("direct:start server").setUri("direct://start").setOperation("start")
+            .setKind("server")
     };
 
     public EIPTracingRouteTest() {

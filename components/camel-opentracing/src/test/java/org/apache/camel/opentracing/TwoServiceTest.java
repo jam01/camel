@@ -27,6 +27,7 @@ public class TwoServiceTest extends CamelOpenTracingTestSupport {
         new SpanTestData().setLabel("ServiceB server").setUri("direct://ServiceB").setOperation("ServiceB")
             .setParentId(1),
         new SpanTestData().setLabel("ServiceA server").setUri("direct://ServiceA").setOperation("ServiceA")
+            .setKind("server")
     };
 
     public TwoServiceTest() {

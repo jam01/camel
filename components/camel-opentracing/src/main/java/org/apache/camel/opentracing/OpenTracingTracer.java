@@ -362,8 +362,9 @@ public class OpenTracingTracer extends ServiceSupport implements RoutePolicyFact
                 if (parentFromExchange != null) {
                     // this means it's an in-process request
                     builder.asChildOf(parentFromExchange);
-                } else if (!(sd instanceof AbstractInternalSpanDecorator)) {
+                } else {
                     // we assume it's an inter-process request and tag it as Server Span
+                    // no longer check for internal endpoints see: github.com/apache/camel/pull/4044#issuecomment-663762863
                     builder.asChildOf(tracer.extract(Format.Builtin.TEXT_MAP,
                             sd.getExtractAdapter(exchange.getIn().getHeaders(), encoding)))
                             .withTag(Tags.SPAN_KIND.getKey(), sd.getReceiverSpanKind());
